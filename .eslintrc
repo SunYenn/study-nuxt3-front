@@ -1,0 +1,67 @@
+{
+  "root": true,       // 프로젝트의 루트 디렉토리에서 .eslintrc.js 파일을 찾음
+  "env": {            // 코드가 실행되는 환경 설정
+    "browser": true,  // 브라우저 환경에서 실행
+    "node": true      // 노드 환경에서 실행
+  },
+  "parser": "vue-eslint-parser",            // Vue.js 코드를 분석할 때 사용할 파서 지정
+  "parserOptions": {                        // TypeScript 코드를 파싱하는 데 사용할 파서 지정
+    "parser": "@typescript-eslint/parser",  
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "vue"
+  ],
+  "extends": [
+    "eslint:recommended",                           // ESLint에서 권장하는 기본 규칙
+    "plugin:nuxt/recommended",                      // Nuxt.js 관련 규칙
+    "plugin:vue/recommended",                       // Vue.js 관련 규칙
+    "plugin:@typescript-eslint/eslint-recommended", // TypeScript ESLint 규칙
+    "@nuxtjs/eslint-config-typescript"              // Nuxt.js 프로젝트에서 TypeScript와 함께 사용되는 ESLint 규칙
+  ],
+  "rules": {
+    "import/extensions": "off",                 // 파일 확장자를 명시적으로 지정하지 않아도 되도록 함
+    "import/no-unresolved": "off",              // 해결할 수 없는 import 경로에 대한 경고 무시
+    "import/no-extraneous-dependencies": "off", // package.json에 없는 패키지를 import할 때 에러 무시
+    "import/prefer-default-export": "off",      // 단일 export가 아니어도 되도록 함
+    "indent": [ "error", 2 ],                   // 스페이스 2로 분리
+    "quotes": [ 2, "single" ],                  // 작은따옴표 사용
+    "semi": [ 2, "never" ],                     // 세미콜론 금지
+    "eqeqeq": [2, "allow-null"],                // == 금지
+    "no-use-before-define": [ 2, "nofunc" ],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }], // 빈줄 최대 1개
+    "vue/html-indent": [
+      "error",
+      2,
+      {
+        "attribute": 1,
+        "baseIndent": 1,
+        "closeBracket": 0,
+        "alignAttributesVertically": true,
+        "ignores": []
+      }
+    ],
+    "comma-spacing": [
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "key-spacing": [
+      1,
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "import/first": [ 0 ],
+    "object-property-newline": [
+      2,
+      {
+        "allowAllPropertiesOnSameLine": true
+      }
+    ]
+  }
+}
