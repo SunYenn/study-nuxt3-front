@@ -1,7 +1,11 @@
 <template>
-  <div>
-  </div>
+  <div />
 </template>
+<script setup lang="ts">
+import { onMounted } from 'vue'
 
-<style scoped>
-</style>
+onMounted(() => {
+  useRouter().push('/auth')
+})
+
+</script>

@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  devServer: {
+    host: 'localhost',
+    port: 3000
+  },
   app: {
     head: {
       title: 'nuxt3-starter-package',
@@ -12,6 +16,11 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     }
   },
+  css: [
+    'assets/font.css',
+    'assets/default.css',
+    'assets/main.css'
+  ],
   modules: [
     '@nuxtjs/eslint-module',
     '@element-plus/nuxt'

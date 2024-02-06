@@ -1,0 +1,270 @@
+/* login */
+.login-box {
+  position: relative;
+  height: 100vh;
+  background: var(--grey-ebe);
+}
+
+.login-box-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-box-inner {
+  min-width: 608px;
+  width: 608px;
+}
+
+.login-logo {
+  text-align: center;
+}
+
+.login-logo h1 {
+  font-size: 7rem;
+}
+
+.login-idpw {
+  position: relative;
+  margin-bottom: 15px;
+  border: 1px solid var(--grey-aab);
+  border-radius: 12px 24px;
+  background-color: white;
+  box-shadow: 2px 3.464px 12px 0px rgba(150, 182, 189, 0.56);
+}
+
+.login-idpw input:-webkit-autofill,
+.login-idpw input:-webkit-autofill:hover,
+.login-idpw input:-webkit-autofill:active,
+.login-idpw input:-webkit-autofill:focus {
+  background-color: var(--white) !important;
+  color: var(--grey-5f6) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--white) inset !important;
+  -webkit-text-fill-color: var(--grey-5f6);
+}
+
+.login-idpw .form-group {
+  margin-bottom: 0;
+}
+
+.login-idpw .el-input__inner {
+  height: 90px;
+  padding: 2.139em 2.188em 2.139em 4.313em;
+  font-size: 2rem !important;
+  color: var(--grey-4d4);
+}
+
+.login-idpw .form-control::placeholder {
+  color: var(--grey-c9c);
+}
+
+.login-idpw .login-id .el-input__inner {
+  border: 0;
+  border-radius: 12px 24px 0 0;
+}
+
+.login-idpw .login-id::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  content: '';
+  display: block;
+  width: 17px;
+  height: 20px;
+  background: url('img/admin/ico_id.png') no-repeat 0 0;
+  transform: translate(33px, -50%);
+}
+
+.login-idpw .login-id::after {
+  position: absolute;
+  left: 33px;
+  bottom: 0;
+  content: '';
+  display: block;
+  width: 90%;
+  height: 1px;
+  background-color: var(--grey-aab);
+}
+
+.login-idpw .login-pw .el-input__inner {
+  border: 0;
+  border-radius: 0 0 12px 24px;
+}
+
+.login-idpw .login-pw::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  content: '';
+  display: block;
+  width: 18px;
+  height: 20px;
+  background: url('img/admin/ico_pw.png') no-repeat 0 0;
+  transform: translate(33px, -50%);
+}
+
+.login-idpw input:-webkit-autofill:disabled {
+  opacity: 0.3;
+}
+
+.login-select .btn-neutral {
+  display: block;
+  height: auto;
+  margin-top: 30px;
+  color: var(--white);
+  border-color: black;
+  background: black;
+  box-shadow: 2px 3.464px 12px 0px rgba(150, 182, 189, 0.56), inset 0px 1px 0px 1px rgba(255, 255, 255, 0.17);
+  border-radius: 12px 24px;
+  font-size: 1.5em;
+  font-weight: 100;
+  line-height: 2.8em;
+}
+
+.login-select .btn-neutral:focus,
+.login-select .btn-neutral:active,
+.login-select .btn-neutral:not(:disabled):not(.disabled):active {
+  color: var(--white);
+  background-color: black;
+  border-color: black;
+}
+
+.login-select .btn-neutral:not(:last-child) {
+  margin-right: 0;
+}
+
+.login-select .btn-neutral span {
+  position: relative;
+}
+
+.login-select .btn-neutral span::before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: url('img/admin/btn_login.png') no-repeat 0 0;
+  vertical-align: middle;
+}
+
+.btn-inner--text {
+  color: whitesmoke;
+}
+
+.el-input__wrapper {
+  background-color: inherit !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
+}
+
+.el-button {
+  transition: all 0.15s ease;
+  will-change: transform;
+}
+
+.el-button:hover {
+  transform: translateY(-1px);
+}
+
+.btn-idpw-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px auto 0;
+}
+
+.btn-idpw-area li {
+  position: relative;
+  margin: 0 35px;
+}
+
+.btn-idpw-area li:last-child {
+  margin-right: initial;
+}
+
+.btn-idpw-area li::before {
+  position: absolute;
+  right: -35px;
+  top: 10px;
+  content: '';
+  display: block;
+  width: 2px;
+  height: 18px;
+  background-color: var(--grey-949);
+}
+
+.btn-idpw-area li:last-child::before {
+  position: initial;
+  right: initial;
+  top: initial;
+  content: none;
+  width: initial;
+  height: initial;
+  background-color: initial;
+}
+
+.btn-idpw-area .el-button {
+  position: relative;
+  display: flex;
+  color: var(--grey-4d4);
+  border: 0 !important;
+}
+
+.btn-idpw-area .el-button span {
+  font-size: var(--fs18);
+}
+
+.btn-idpw-area .el-button:hover,
+.btn-idpw-area .el-button:focus {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+/* navbar */
+.navbar-top {
+  height: 100%;
+  background-color: black;
+}
+.navbar-top .el-button {
+  color: var(--el-menu-text-color);
+}
+.navbar-top .el-button:hover,
+.navbar-top .el-button:active {
+  border-color: var(--el-menu-active-color);
+  color: var(--el-menu-active-color);
+}
+.txt-login {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  line-height: var(--el-menu-item-height);
+  font-size: var(--el-menu-item-font-size);
+  color: var(--el-menu-text-color);
+  padding: 0 var(--el-menu-base-level-padding);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.txt-login::before {
+  content: '';
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin-right: 8px;
+  background: url('img/icons/ico_login.png') no-repeat 0 0;
+}
+
+.txt-login > p {
+  margin-right: 15px;
+}
+
+/* main */
+.el-main > div {
+  height: 100%;
+  padding: 24px;
+}
+
+.el-main > div > .content-wrap {
+  background-color: white;
+  height: 100%;
+  border-radius: 20px;
+}
