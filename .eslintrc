@@ -32,6 +32,7 @@
     "no-console": "off",                        // console 허용
     "no-use-before-define": [ 2, "nofunc" ],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }], // 빈줄 최대 1개
+    "vue/no-v-for-template-key": "off",
     "vue/html-indent": [
       "error",
       2,

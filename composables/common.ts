@@ -27,6 +27,22 @@ const comfn = {
   },
 
   // ========================================================================
+  // Object 관련
+  // ========================================================================
+  cloneDeep (value: any) {
+    return _.cloneDeep(value)
+  },
+  // array에서 특정 key의 value값을 통해 원하는 object 가져오는 함수
+  getObjByKeyNValue<T extends Record<string, string>> (
+    arr: T[],
+    key: keyof T,
+    value: any
+  ): T | null {
+    const obj = arr.find(obj => obj[key].toString().trim() === value.toString().trim())
+    return obj ?? null
+  },
+
+  // ========================================================================
   // 쿠키
   // ========================================================================
   setCookie (cookieName: string, cookieValue: any, options: any) {

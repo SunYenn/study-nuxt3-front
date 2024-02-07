@@ -1,13 +1,13 @@
 <template>
   <div class="content-wrap">
-    dashboard
+    menuMng
   </div>
 </template>
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
 definePageMeta({
-  name: 'Dashboard',
+  name: 'MenuMng',
   layout: 'main'
 })
 

@@ -11,20 +11,21 @@ export const useApi = {
     useFetch(url, {
       baseURL: baseUrl,
       method: 'POST',
-      body: { ...data },
+      body: JSON.stringify(data),
       onRequest: (context: any) => {
-        const route = useRoute()
+        const router = useRouter()
 
         context.options.headers = new Headers(context.options.headers)
-        context.options.headers.append('Authrization', comfn.getCookie('access_token') || comfn.getCookie('refresh_token'))
-        context.options.headers.append('Pagepath', route.fullPath)
+        context.options.headers.append('Authorization', comfn.getCookie('access_token') || comfn.getCookie('refresh_token'))
+        context.options.headers.append('Pagepath', router.currentRoute.value.fullPath)
       },
       onResponse ({ response }) {
         // Process the response data
-        console.log('Set-Cookie >>> ', response.headers.get('Set-Cookie'))
-        const res = response._data
-        console.log('response._data >>> ', res)
+        // console.log('Set-Cookie >>> ', response.headers.get('Set-Cookie'))
+        // const res = response._data
+        // console.log('response._data >>> ', res)
         // localStorage.setItem('token', response._data.token)
+        return response
       }
     }),
   patch: (url: string, data?: object) =>

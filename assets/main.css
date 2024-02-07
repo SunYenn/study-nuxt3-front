@@ -233,18 +233,38 @@
   border-color: var(--el-menu-active-color);
   color: var(--el-menu-active-color);
 }
-.txt-login {
-  margin-left: auto;
+.navbar-top .el-menu--horizontal {
+  height: var(--el-header-height) !important;
+}
+.navbar-top > .el-menu > div {
   display: flex;
   align-items: center;
   line-height: var(--el-menu-item-height);
-  font-size: var(--el-menu-item-font-size);
   color: var(--el-menu-text-color);
   padding: 0 var(--el-menu-base-level-padding);
+  font-size: var(--el-menu-item-font-size);
   cursor: pointer;
   white-space: nowrap;
 }
-.txt-login::before {
+.navbar-top .go-home{
+  margin-right: 3px;
+}
+.navbar-top .go-home > .el-icon:hover{
+  color: var(--el-menu-active-color);
+}
+.navbar-top .go-home::before {
+  position: relative;
+  right: -47px;
+  content: '';
+  display: block;
+  width: 2px;
+  height: calc(100% - 25px);
+  background-color: var(--el-menu-text-color);
+}
+.navbar-top .txt-login {
+  margin-left: auto;
+}
+.navbar-top .txt-login::before {
   content: '';
   display: inline-block;
   width: 26px;
@@ -253,7 +273,7 @@
   background: url('img/icons/ico_login.png') no-repeat 0 0;
 }
 
-.txt-login > p {
+.navbar-top .txt-login > p {
   margin-right: 15px;
 }
 
