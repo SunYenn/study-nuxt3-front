@@ -33,13 +33,21 @@ const comfn = {
     return _.cloneDeep(value)
   },
   // array에서 특정 key의 value값을 통해 원하는 object 가져오는 함수
-  getObjByKeyNValue<T extends Record<string, string>> (
-    arr: T[],
-    key: keyof T,
+  getObjByKeyNValue (
+    arr: any[],
+    key: string,
     value: any
-  ): T | null {
+  ): any | null {
     const obj = arr.find(obj => obj[key].toString().trim() === value.toString().trim())
     return obj ?? null
+  },
+  // 계층형 object[]를 평탄화
+  getFlatArr (arr: any[]) {
+    const flatArr = arr.flatMap((obj: Tab) =>
+      obj.children && obj.children.length > 0 ? obj.children : [obj]
+    )
+
+    return flatArr
   },
 
   // ========================================================================

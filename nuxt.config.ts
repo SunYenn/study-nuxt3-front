@@ -32,5 +32,8 @@ export default defineNuxtConfig({
     '@element-plus/nuxt'
   ],
   build: {
+  },
+  imports: {
+    dirs: ['types/*.ts', 'store/*.ts', 'types/**/*.ts']
   }
 })

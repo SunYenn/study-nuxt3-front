@@ -11,12 +11,12 @@ definePageMeta({
   layout: 'main'
 })
 
-const paging = {
-  boardGrp: 'PUBB_0001',
-  pageSize: 100,
-  currentPage: 1,
-  totalPage: 0
-}
+// const paging = {
+//   boardGrp: 'PUBB_0001',
+//   pageSize: 100,
+//   currentPage: 1,
+//   totalPage: 0
+// }
 
 function init () {
   // const res = useApi.post('api/v1/board/getBoardList', paging)

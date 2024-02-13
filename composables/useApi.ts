@@ -1,14 +1,15 @@
 const baseUrl = 'http://localhost:8080'
 
 export const useApi = {
-  get: (url: string, data?: object) =>
-    useFetch(url, {
+  get: (url: string, data?: object) => {
+    return useFetch(url, {
       baseURL: baseUrl,
       method: 'GET',
       params: data
-    }),
-  post: (url: string, data?: object) =>
-    useFetch(url, {
+    })
+  },
+  post: (url: string, data?: object) => {
+    return useFetch(url, {
       baseURL: baseUrl,
       method: 'POST',
       body: JSON.stringify(data),
@@ -22,22 +23,24 @@ export const useApi = {
       onResponse ({ response }) {
         // Process the response data
         // console.log('Set-Cookie >>> ', response.headers.get('Set-Cookie'))
-        // const res = response._data
-        // console.log('response._data >>> ', res)
+        const res = response._data
+        console.log('response._data >>> ', res)
         // localStorage.setItem('token', response._data.token)
-        return response
       }
-    }),
-  patch: (url: string, data?: object) =>
-    useFetch(url, {
+    })
+  },
+  patch: (url: string, data?: object) => {
+    return useFetch(url, {
       baseURL: baseUrl,
       method: 'PATCH',
       params: data
-    }),
-  delete: (url: string, data?: object) =>
-    useFetch(url, {
+    })
+  },
+  delete: (url: string, data?: object) => {
+    return useFetch(url, {
       baseURL: baseUrl,
       method: 'DELETE',
       params: data
     })
+  }
 }

@@ -16,7 +16,7 @@
               <HomeFilled />
             </el-icon>
           </div>
-          <template v-for="(tab) in tabs">
+          <template v-for="(tab) in navTabs">
             <!-- 하위 메뉴 없을 때-->
             <el-menu-item
               v-if="!tab.children || tab.children.length === 0"
@@ -65,17 +65,8 @@ import { ref, nextTick, onBeforeMount } from 'vue'
 import { comfn } from '@/composables/common'
 import { useApi } from '@/composables/useApi'
 
-interface Tab {
-  menuNm: string,
-  menuSeq: number
-  children?: {
-    menuNm: string,
-    menuSeq: number
-  }[]
-}
-
 const router = useRouter()
-const tabs = ref<Tab[]>([])
+const navTabs = ref<Tab[]>([])
 
 onBeforeMount(async () => {
   await nextTick()
@@ -83,21 +74,20 @@ onBeforeMount(async () => {
 })
 
 const handleSelect = (value: string) => {
-  const tabArr = comfn.cloneDeep(tabs.value)
-  const flatTabArr = tabArr.flatMap((tabObj: Tab) =>
-    tabObj.children && tabObj.children.length > 0 ? tabObj.children : [tabObj]
-  )
+  const tabArr = comfn.cloneDeep(navTabs.value)
+  const flatTabArr = comfn.getFlatArr(tabArr)
   const selectObj = comfn.getObjByKeyNValue(flatTabArr, 'menuSeq', value)
   const menuUri = selectObj ? selectObj.menuUri : ''
   router.push(menuUri)
 }
 
-function init () {
-  useApi.post('/api/v1/menu', {
+async function init () {
+  const res = await useApi.post('/api/v1/menu', {
     isMainCallForMenu: true
-  }).then((res) => {
-    tabs.value = res.data.value as Tab[]
   })
+  const data = comfn.cloneDeep(res.data.value as Tab[])
+  console.log(data)
+  navTabs.value = data
 }
 
 function home () {
