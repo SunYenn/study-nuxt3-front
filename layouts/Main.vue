@@ -82,11 +82,10 @@ const handleSelect = (value: string) => {
 }
 
 async function init () {
-  const res = await useApi.post('/api/v1/menu', {
+  const res = await useApi.post('navMenu', '/api/v1/menu', {
     isMainCallForMenu: true
   })
   const data = comfn.cloneDeep(res.data.value as Tab[])
-  console.log(data)
   navTabs.value = data
 }
 

@@ -135,7 +135,7 @@ onMounted(async () => {
 })
 
 function init () {
-  useApi.post('/api/v1/menu', {
+  useApi.post('menu', '/api/v1/menu', {
     isMainCallForMenu: false
   }).then((res) => {
     tabs.value = res.data.value as Tab[]

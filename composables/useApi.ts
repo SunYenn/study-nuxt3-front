@@ -8,8 +8,9 @@ export const useApi = {
       params: data
     })
   },
-  post: (url: string, data?: object) => {
+  post: (key: string, url: string, data?: object) => {
     return useFetch(url, {
+      key: key,
       baseURL: baseUrl,
       method: 'POST',
       body: JSON.stringify(data),

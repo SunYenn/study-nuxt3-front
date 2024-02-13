@@ -78,7 +78,7 @@ const modalFg = {
 
 function onSubmit () {
   // const { data, pending, error, refresh } = useApi('/api/v1/auth/login', {
-  useApi.post('/api/v1/auth/login', {
+  useApi.post('login', '/api/v1/auth/login', {
     userId: loginForm.value.userId,
     userPw: loginForm.value.userPw
   }).then((res: any) => {
