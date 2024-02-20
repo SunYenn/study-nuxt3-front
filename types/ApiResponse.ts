@@ -1,9 +1,9 @@
-interface ApiResponse {
+interface apiResponse {
   success: boolean
   message: string
   data: any | undefined
 }
 
 export type {
-  ApiResponse
+  apiResponse
 }

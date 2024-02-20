@@ -10,7 +10,7 @@ export const useApi = {
   },
   post: (key: string, url: string, data?: object) => {
     return useFetch(url, {
-      key: key,
+      key,
       baseURL: baseUrl,
       method: 'POST',
       body: JSON.stringify(data),
@@ -25,7 +25,7 @@ export const useApi = {
         // Process the response data
         // console.log('Set-Cookie >>> ', response.headers.get('Set-Cookie'))
         const res = response._data
-        console.log('response._data >>> ', res)
+        // console.log('response._data >>> ', res)
         // localStorage.setItem('token', response._data.token)
       }
     })

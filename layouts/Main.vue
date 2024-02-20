@@ -65,18 +65,24 @@ import { ref, nextTick, onBeforeMount } from 'vue'
 import { comfn } from '@/composables/common'
 import { useApi } from '@/composables/useApi'
 
+const { $bus } = useNuxtApp()
 const router = useRouter()
-const navTabs = ref<Tab[]>([])
+const navTabs = ref<MenuVO[]>([])
+let flatNavTabs: MenuVO[] = []
 
-onBeforeMount(async () => {
+onBeforeMount(() => {
+  $bus.$on('roadMenu', () => {
+    init()
+  })
+})
+
+onMounted(async () => {
   await nextTick()
   await init()
 })
 
 const handleSelect = (value: string) => {
-  const tabArr = comfn.cloneDeep(navTabs.value)
-  const flatTabArr = comfn.getFlatArr(tabArr)
-  const selectObj = comfn.getObjByKeyNValue(flatTabArr, 'menuSeq', value)
+  const selectObj = comfn.getObjByKeyNValue(flatNavTabs, 'menuSeq', value)
   const menuUri = selectObj ? selectObj.menuUri : ''
   router.push(menuUri)
 }
@@ -85,8 +91,9 @@ async function init () {
   const res = await useApi.post('navMenu', '/api/v1/menu', {
     isMainCallForMenu: true
   })
-  const data = comfn.cloneDeep(res.data.value as Tab[])
+  const data = comfn.cloneDeep(res.data.value as MenuVO[])
   navTabs.value = data
+  flatNavTabs = comfn.getFlatArr(data, 'children')
 }
 
 function home () {
