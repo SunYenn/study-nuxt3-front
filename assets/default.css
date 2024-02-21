@@ -251,7 +251,7 @@ section.wrap {
 }
 
 .card .card-body {
-  max-height: calc(100% - 135px);
+  max-height: calc(100vh - 259px);
   overflow-y: auto;
 }
 

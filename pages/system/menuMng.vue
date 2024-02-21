@@ -56,6 +56,7 @@
                     <el-select
                       v-model="form.pmenuSeq"
                       :disabled="!isRegist && form.menuSeq === 0"
+                      @change="pMenuChange"
                     >
                       <el-option
                         :key="0"
@@ -195,15 +196,41 @@ function init () {
 }
 
 function reset () {
+  form.value.menuPropId = ''
+  form.value.menuUri = ''
+  form.value.menuNm = ''
+  form.value.menuDesc = ''
 }
 
-function regist () {
-  isRegist.value = true
-
-
+/**
+ * 노출 순서 얻어오는 함수
+ * @param pmenuSeq 선택한 노드의 상위 메뉴 시퀀스 번호
+ */
+const getLastDspOrd = (pmenuSeq: number) => {
+  useApi.post('getlastDspOrd', '/api/v1/menu/lastDspOrd', {
+    pmenuSeq
+  }).then((res) => {
+    const result = res.data.value as apiResponse
+    if (result.success) {
+      form.value.dspOrd = result.data
+    } else {
+      ElMessage.error('메뉴 정보를 얻어오는 데 실패했습니다.')
+    }
+  })
 }
 
 const creMenu = () => {
+  useApi.post('creMenu', '/api/v1/menu/creMenu', form.value)
+    .then((res) => {
+      const result = res.data.value as apiResponse
+      if (result.success) {
+        init()
+        $bus.$emit('roadMenu')
+        ElMessage.success('메뉴를 등록하였습니다.')
+      } else {
+        ElMessage.error('메뉴 등록에 실패했습니다.')
+      }
+    })
 }
 
 const udtMenu = () => {
@@ -214,6 +241,7 @@ const udtMenu = () => {
         if (result.success) {
           init()
           $bus.$emit('roadMenu')
+          ElMessage.success('해당 메뉴를 수정하였습니다.')
         } else {
           ElMessage.error('메뉴 수정에 실패했습니다.')
         }
@@ -233,6 +261,7 @@ function delMenu () {
         if (result.success) {
           init()
           $bus.$emit('roadMenu')
+          ElMessage.success('해당 메뉴를 삭제했습니다.')
         } else {
           ElMessage.error('메뉴 삭제에 실패했습니다.')
         }
@@ -240,8 +269,26 @@ function delMenu () {
   })
 }
 
+function regist () {
+  isRegist.value = true
+  form.value.menuNm = ''
+  form.value.menuDesc = ''
+  getLastDspOrd(0)
+}
+
 function handleNodeClick (data: MenuVO) {
   form.value = comfn.cloneDeep(data)
+  if (isRegist.value) {
+    form.value.menuNm = ''
+    form.value.menuDesc = ''
+    getLastDspOrd(form.value.pmenuSeq)
+  }
+}
+
+function pMenuChange () {
+  if (isRegist) {
+    getLastDspOrd(form.value.pmenuSeq)
+  }
 }
 
 </script>

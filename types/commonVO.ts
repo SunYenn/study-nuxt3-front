@@ -1,6 +1,6 @@
 interface MenuVO {
   menuSeq: number,
-  pmenuSeq?: number,
+  pmenuSeq: number,
   menuPropId?: string,
   menuUri: string,
   menuNm?: string,
