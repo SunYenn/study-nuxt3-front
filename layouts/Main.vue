@@ -78,7 +78,7 @@ onBeforeMount(() => {
 
 onMounted(async () => {
   await nextTick()
-  await init()
+  init()
 })
 
 const handleSelect = (value: string) => {
@@ -87,13 +87,19 @@ const handleSelect = (value: string) => {
   router.push(menuUri)
 }
 
-async function init () {
-  const res = await useApi.post('navMenu', '/api/v1/menu', {
+function init () {
+  useApi.post('navMenu', '/api/v1/menu', {
     isMainCallForMenu: true
+  }).then((res: any) => {
+    const result = res.data.value as apiResponse
+    if (result.success) {
+      const data = comfn.cloneDeep(result.data as MenuVO[])
+      navTabs.value = data
+      flatNavTabs = comfn.getFlatArr(data, 'children')
+    } else {
+      ElMessage.error('메뉴 정보를 얻어오는 데 실패했습니다.')
+    }
   })
-  const data = comfn.cloneDeep(res.data.value as MenuVO[])
-  navTabs.value = data
-  flatNavTabs = comfn.getFlatArr(data, 'children')
 }
 
 function home () {

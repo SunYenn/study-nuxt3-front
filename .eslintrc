@@ -33,6 +33,7 @@
     "no-use-before-define": [ 2, "nofunc" ],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }], // 빈줄 최대 1개
     "vue/no-v-for-template-key": "off",
+    "vue/multi-word-component-names": "off",    // component 2단어 이상 제한 해제
     "vue/html-indent": [
       "error",
       2,

@@ -113,7 +113,6 @@ button,
 textarea,
 select {
   font-family: 'NotoSansKR', 'univers', arial, Dotum, '돋움', Helvetica, AppleSDGothicNeo, sans-serif;
-  letter-spacing: -1px;
 }
 .p-3 {
   padding: 3rem;
@@ -275,39 +274,6 @@ section.wrap {
 
 .d-flex {
   display: flex !important;
-}
-
-table {
-  width: 100%;
-  color: #212529;
-  border-collapse: collapse;
-  border-top: 3px solid #212529;
-}
-
-table th {
-  text-align: center;
-  background: var(--grey-f6f) !important;
-  padding: 18px 10px;
-  border-left: 1px solid var(--grey-dfe) !important;
-  font-size: var(--fs14) !important;
-  white-space: normal;
-  font-weight: 600;
-}
-
-table th:first-child {
-  border-left: 0 !important;
-}
-
-th, td {
-  vertical-align: middle;
-}
-
-.table-horizontal th, .table-horizontal td {
-  padding: 1.8rem 3rem;
-  font-size: var(--fs16) !important;
-  white-space: normal;
-  border-left: 1px solid var(--grey-dfe) !important;
-  border-top: 1px solid #e9ecef;
 }
 
 /*scrollbar*/

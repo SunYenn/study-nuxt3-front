@@ -156,7 +156,7 @@ const defaultProps = {
   label: 'menuNm'
 }
 
-const isRegist = ref(false)
+const isRegist = ref<boolean>(false)
 const menuList = ref<MenuVO[]>([])
 const flatMenuList = ref<MenuVO[]>([])
 const form = ref<MenuVO>({
@@ -180,17 +180,21 @@ onMounted(async () => {
 function init () {
   useApi.post('menu', '/api/v1/menu', {
     isMainCallForMenu: false
-  }).then((res) => {
-    const result = res.data.value as MenuVO[]
-    menuList.value = result
-    flatMenuList.value = comfn.getFlatArr(result, 'children')
+  }).then((res: any) => {
+    const result = res.data.value as apiResponse
+    if (result.success) {
+      menuList.value = result.data as MenuVO[]
+      flatMenuList.value = comfn.getFlatArr(result.data, 'children')
 
-    form.value = {
-      menuSeq: 0,
-      pmenuSeq: 0,
-      menuPropId: '',
-      menuUri: '',
-      dspOrd: 1
+      form.value = {
+        menuSeq: 0,
+        pmenuSeq: 0,
+        menuPropId: '',
+        menuUri: '',
+        dspOrd: 1
+      }
+    } else {
+      ElMessage.error('메뉴 정보를 얻어오는 데 실패했습니다.')
     }
   })
 }
@@ -209,7 +213,7 @@ function reset () {
 const getLastDspOrd = (pmenuSeq: number) => {
   useApi.post('getlastDspOrd', '/api/v1/menu/lastDspOrd', {
     pmenuSeq
-  }).then((res) => {
+  }).then((res: any) => {
     const result = res.data.value as apiResponse
     if (result.success) {
       form.value.dspOrd = result.data
@@ -221,7 +225,7 @@ const getLastDspOrd = (pmenuSeq: number) => {
 
 const creMenu = () => {
   useApi.post('creMenu', '/api/v1/menu/creMenu', form.value)
-    .then((res) => {
+    .then((res: any) => {
       const result = res.data.value as apiResponse
       if (result.success) {
         init()
@@ -236,7 +240,7 @@ const creMenu = () => {
 const udtMenu = () => {
   comfn.confirm('정말 수정하시겠습니까?', () => {
     useApi.post('udtMenu', '/api/v1/menu/udtMenu', form.value)
-      .then((res) => {
+      .then((res: any) => {
         const result = res.data.value as apiResponse
         if (result.success) {
           init()
@@ -256,7 +260,7 @@ function submit () {
 function delMenu () {
   comfn.confirm('정말 삭제하시겠습니까?', () => {
     useApi.post('delMenu', '/api/v1/menu/delMenu', form.value)
-      .then((res) => {
+      .then((res: any) => {
         const result = res.data.value as apiResponse
         if (result.success) {
           init()

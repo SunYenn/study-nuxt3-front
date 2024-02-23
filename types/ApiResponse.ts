@@ -1,6 +1,6 @@
 interface apiResponse {
   success: boolean
-  message: string
+  message?: string | undefined
   data: any | undefined
 }
 

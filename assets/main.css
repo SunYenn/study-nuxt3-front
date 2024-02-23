@@ -261,6 +261,7 @@
 }
 .navbar-top .txt-login {
   margin-left: auto;
+  letter-spacing: -1px;
 }
 .navbar-top .txt-login::before {
   content: '';
@@ -273,6 +274,32 @@
 
 .navbar-top .txt-login > p {
   margin-right: 15px;
+}
+
+/* title */
+.title-bar {
+  white-space: nowrap;
+  font-size: 20px;
+  padding: 24px 30px 0 30px;
+  text-align: left !important;
+  margin-bottom: 18px;
+}
+.title-bar::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  margin: -3px 3px 0 0;
+  background-color: #333;
+  vertical-align: middle;
+}
+
+/* btn area */
+.btn-area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
 }
 
 /* main */
@@ -309,6 +336,22 @@
   margin: 0;
 }
 
+/* 시스템관리 (권한관리) */
+.authority-wrap .card-body > div {
+  width: 100%;
+}
+
+.authority-wrap .card-body > div:first-child {
+  width: 25%;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.authority-wrap .el-tree {
+  overflow-y: auto;
+  height: calc(100% - 71px);
+  padding: 0 20px 24px;
+}
+
 /* Tree */
 .el-tree-node {
   white-space: normal !important;
@@ -323,3 +366,60 @@
 .el-tree-node__label {
   font-size: var(--fs17) !important;
 }
+
+/* Table */
+div.el-table,
+table.table-horizontal {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #212529;
+}
+
+table th {
+  color: #212529 !important;
+  text-align: center;
+  background: var(--grey-f6f) !important;
+  padding: 18px 10px;
+  border-left: 1px solid var(--grey-dfe) !important;
+  font-size: var(--fs14) !important;
+  white-space: normal;
+  font-weight: 600;
+}
+
+table th:first-child {
+  border-left: 0 !important;
+}
+
+th, td {
+  vertical-align: middle;
+}
+
+.table-horizontal {
+  border-bottom: 1px solid var(--grey-dfe) !important;
+}
+
+.table-horizontal th, .table-horizontal td {
+  padding: 1.8rem 3rem;
+  font-size: var(--fs16) !important;
+  white-space: normal;
+  border-left: 1px solid var(--grey-dfe) !important;
+  border-top: 1px solid #e9ecef;
+}
+
+.el-table .el-table__header-wrapper thead th {
+  border-bottom: 1px solid var(--grey-aab) !important;
+}
+
+.el-table .el-table__header-wrapper thead th .cell {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px !important;
+  white-space: nowrap;
+}
+
+.el-table .el-table__cell {
+  padding: 15px 0 !important;
+}
+
